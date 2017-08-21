@@ -1,11 +1,11 @@
 package knd.com.lib_core.feature;
 
-import knd.com.lib_core.feature.model.Request;
+import knd.com.lib_core.callback.FeatureCallback;
 
 /**
  * Created by itphe on 8/21/2017.
  */
 
-public interface Feature<T extends Request> {
-    void execute(T t);
+public interface Feature<T> {
+    void execute(FeatureCallback<T> featureCallback);
 }
