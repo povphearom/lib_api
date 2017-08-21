@@ -19,5 +19,4 @@ android {
 }
 
 dependencies {
-    compile 'com.google.api-client:google-api-client-android:1.22.0'
 }
