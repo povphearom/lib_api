@@ -2,7 +2,6 @@ package knd.com.lib_core.utils;
 
 import android.content.ContentUris;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -21,7 +20,6 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -30,10 +28,6 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-
-import com.afinos.api.application.MyApp;
-import com.afinos.api.permission.usage.PermissionChecker;
-import com.afinos.studyspaced.R;
 
 import java.io.File;
 import java.util.Locale;
@@ -183,7 +177,7 @@ public class AppUtils {
     }
 
     public Bitmap generateAvatar(int res) {
-        Bitmap bitmap = BitmapFactory.decodeResource(MyApp.init().getResources(), res);
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), res);
         bitmap = Bitmap.createBitmap(bitmap.getWidth(),
                 bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -231,7 +225,7 @@ public class AppUtils {
     }
 
     private int getTextSize() {
-        return MyApp.init().getResources().getDimensionPixelSize(R.dimen.icon_text_size);
+        return AppUtils.dpToPixel(mContext, 12);
     }
 
     public int getSize(int id) {
@@ -268,34 +262,6 @@ public class AppUtils {
         builder.append(s);
         builder.setSpan(new ForegroundColorSpan(c), 0, s.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return builder;
-    }
-
-    public static void openSettingDetail(final Context context, String... permission) {
-        if (permission == null) return;
-        StringBuilder stringBuilder = new StringBuilder();
-        for (String s : permission) {
-            stringBuilder.append(",");
-            stringBuilder.append(s);
-        }
-
-        AlertDialog dialog = new AlertDialog.Builder(context).create();
-        dialog.setTitle("Permission warning");
-        dialog.setMessage("You has denied permission of (" + stringBuilder.substring(1) + "). Do you want to allow it?");
-        dialog.setCancelable(true);
-        dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return;
-                PermissionChecker.openSettingsScreen(context);
-            }
-        });
-        dialog.show();
     }
 
     public int getNavigationBarHeight(int orientation) {

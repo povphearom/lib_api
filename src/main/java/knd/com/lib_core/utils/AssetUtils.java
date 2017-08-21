@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 
-import com.afinos.api.drawableAnimate.GifAnimationDrawable;
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -38,6 +36,7 @@ public class AssetUtils {
         }
         return null;
     }
+
     public String[] withPath(String parent) {
         try {
             return manager.list(parent);
@@ -51,13 +50,7 @@ public class AssetUtils {
         Drawable d = null;
         try {
             InputStream is = manager.open(parent + "/" + fileName);
-            if (fileName.contains("gif")) {
-                d = new GifAnimationDrawable(is);
-                ((GifAnimationDrawable) d).setOneShot(true);
-                d.setVisible(true, true);
-            } else {
-                d = Drawable.createFromStream(is, null);
-            }
+            d = Drawable.createFromStream(is, null);
             is.close();
         } catch (IOException e) {
             e.printStackTrace();

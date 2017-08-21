@@ -10,11 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.afinos.api.binder.ItemBinder;
-import com.afinos.api.listener.ClickHandler;
-
 import java.lang.ref.WeakReference;
 import java.util.Collection;
+
+import knd.com.lib_core.binder.ItemBinder;
+import knd.com.lib_core.listener.ClickHandler;
 
 public class BindingPagerAdapter<T> extends PagerAdapter implements View.OnClickListener{
     private static final int ITEM_MODEL = -124;

@@ -2,8 +2,6 @@ package knd.com.lib_core.utils;
 
 import android.text.format.DateUtils;
 
-import com.afinos.api.application.MyApp;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -44,10 +42,10 @@ public class DateFormatUtils {
         return before;
     }
 
-    public static long convertCurrentDate(long groupActive) {
-        long currentMil = groupActive - MyApp.init().getTimeOffSet();
-        return currentMil;
-    }
+//    public static long convertCurrentDate(Context context,long groupActive) {
+//        long currentMil = groupActive - MyApp.init().getTimeOffSet();
+//        return currentMil;
+//    }
 
     public static String convertDate(long groupActive) {
         long now = System.currentTimeMillis();

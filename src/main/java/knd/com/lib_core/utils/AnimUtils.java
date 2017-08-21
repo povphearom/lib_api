@@ -9,7 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 
-import com.afinos.api.animation.SimpleAnimationListener;
+import knd.com.lib_core.animation.SimpleAnimationListener;
 
 /**
  * Created by Dell on 11/23/2016.
